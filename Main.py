@@ -102,3 +102,5 @@ while(choice != "W"):
 print("			You got {} out of {} chords correct".format(chordsCorrect, chordTrials))
 print("			You got {} out of {} notes correct".format(notesCorrect, notesTrials))
 print("                               HOPE YOU HAD FUN !!!!")		
+
+input("Press enter to exit ")

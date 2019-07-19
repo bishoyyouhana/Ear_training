@@ -23,14 +23,17 @@ print("when writing chord names, write the actual chord in capital and its type 
 print("Now I will play a note and a chord for you reference")
 input("press enter to continue")
 
+os.chdir(r"notes")
 relativeNote = random.randint(0,35)
-winsound.PlaySound(NoteNames[relativeNote],winsound.SND_FILENAME)
+winsound.PlaySound(NoteNames[relativeNote],1)
 print(NoteNames[relativeNote].strip(".wav"))
 relativeNoteInput = input("press R to replay -- or press enter to move on ")
 while relativeNoteInput== "R":
 		winsound.PlaySound(NoteNames[relativeNote],winsound.SND_FILENAME)
 		relativeNoteInput = input("press R to replay -- or press enter to move on ")
 
+os.chdir("..")
+os.chdir(r"chords")
 relativeChord = random.randint(0,9)
 winsound.PlaySound(ChordNames[relativeChord],winsound.SND_FILENAME)
 print(ChordNames[relativeChord].strip(".wav"))
@@ -38,6 +41,7 @@ relativeChordInput = input("press R to replay -- or press enter to move on ")
 while relativeChordInput== "R":
 	winsound.PlaySound(ChordNames[relativeChord],winsound.SND_FILENAME)
 	relativeChordInput = input("press R to replay -- or press enter to move on ")
+os.chdir("..")
 
 print("					LET'S DANCE  ")
 

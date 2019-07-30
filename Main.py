@@ -8,8 +8,8 @@ import string
 #os.chdir(r"Ear_training")
 #error handling goes here (incase it's needed), first error is winError 2- has to do with relative paths being unrelative after one use.
 
+KeyNames = os.listdir(r"keys")
 NoteNames = os.listdir(r"notes")
-ChordNames = os.listdir(r"chords")
 
 notesTrials =0
 chordTrials = 0
@@ -20,9 +20,13 @@ print("Alright lads listen, you are about to play the ultimate guitar Ear traini
 print("Rules are simple, have fun and practice")
 print("when interacting with the inteface use capital letters R C N")
 print("when writing chord names, write the actual chord in capital and its type in small letters, WITHOUT SPACES e.g. Aminor")
+os.chdir(r"keys")
+KeyName=input("What key do you ant the chords to be in {}".format(KeyNames))
+ChordNames = os.listdir(KeyName)
 print("Now I will play a note and a chord for you reference")
 input("press enter to continue")
 
+os.chdir("..")
 os.chdir(r"notes")
 relativeNote = random.randint(0,35)
 winsound.PlaySound(NoteNames[relativeNote],1)
@@ -33,7 +37,8 @@ while relativeNoteInput== "R":
 		relativeNoteInput = input("press R to replay -- or press enter to move on ")
 
 os.chdir("..")
-os.chdir(r"chords")
+os.chdir(r"keys")
+os.chdir(KeyName)
 relativeChord = random.randint(0,9)
 winsound.PlaySound(ChordNames[relativeChord],winsound.SND_FILENAME)
 print(ChordNames[relativeChord].strip(".wav"))
@@ -41,6 +46,7 @@ relativeChordInput = input("press R to replay -- or press enter to move on ")
 while relativeChordInput== "R":
 	winsound.PlaySound(ChordNames[relativeChord],winsound.SND_FILENAME)
 	relativeChordInput = input("press R to replay -- or press enter to move on ")
+os.chdir("..")
 os.chdir("..")
 
 print("					LET'S DANCE  ")
@@ -67,7 +73,7 @@ def playNotes():
 def playChords():
 	global chordsCorrect
 	global chordTrials
-	integer = random.randint(0,9)
+	integer = random.randint(0,5)
 	winsound.PlaySound(ChordNames[integer],winsound.SND_FILENAME)
 	x = input("press R to replay -- or enter your answer and press enter ")
 	while x== "R":
@@ -89,9 +95,11 @@ while(choice != "W"):
 		os.chdir("..")
 
 	elif(choice == "C"):
-		os.chdir(r"chords")		
+		os.chdir(r"keys")	
+		os.chdir(KeyName)	
 		playChords()
 		choice = input("what do you want to practice chords (C) or notes (N)? Or are you too weak to practice (W)")
+		os.chdir("..")
 		os.chdir("..")
 
 	else:

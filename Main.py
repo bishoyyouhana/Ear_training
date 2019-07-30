@@ -39,7 +39,7 @@ while relativeNoteInput== "R":
 os.chdir("..")
 os.chdir(r"keys")
 os.chdir(KeyName)
-relativeChord = random.randint(0,9)
+relativeChord = random.randint(0,5)
 winsound.PlaySound(ChordNames[relativeChord],winsound.SND_FILENAME)
 print(ChordNames[relativeChord].strip(".wav"))
 relativeChordInput = input("press R to replay -- or press enter to move on ")
